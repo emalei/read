@@ -4,7 +4,7 @@ const state = {
 
 const getters = {
 	getHistory: state => {
-		state.history = state.history || JSON.parse(localStorage.getItem('HISTORY'))
+		state.history = state.history || JSON.parse(sessionStorage.getItem('HISTORY'))
 		return state.history;
 	}
 }
@@ -21,7 +21,7 @@ const actions = {
 const mutations = {
 	HISTORY(state, history) {
 		state.history = Object.assign({},state.history,{[history.id]:history});
-		localStorage.setItem('HISTORY', JSON.stringify(state.history));
+		sessionStorage.setItem('HISTORY', JSON.stringify(state.history));
 	}
 }
 

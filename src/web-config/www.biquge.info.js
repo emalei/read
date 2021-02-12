@@ -16,10 +16,18 @@ export default {
 		}
 	},
 	detail:{
-		list:"#list dl dd",//章节列表
+		list:"#list > dl > dd > a",//章节列表
 		chapterUrl:"a|href",//章节列表
 		introduction:"#intro p",//简介
 		homeImg:"#fmimg img|src",//封面
+		name:"#info > h1",//小说名称
+		type:"#info > p:nth-child(3)",//小说类别
+		author:"#info > p:nth-child(2)",//作者
+		updateNow:"#info > p:nth-child(4)",//最近更新时间
+		startIndex:5,//列表开始章节，因为有些网站会吧最新的章节显示在最前面
+	},
+	content:{
+		text:"#content"
 	}
 	
 }

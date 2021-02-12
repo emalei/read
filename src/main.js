@@ -6,8 +6,10 @@ import './plugins/axios'
 import antd from 'ant-design-vue'
 import 'ant-design-vue/dist/antd.css';
 import './assets/css/style.less'
+import plugins from "./plugins/libiary/public"
 
-Vue.use(antd)
+Vue.use(antd);
+Vue.use(plugins);
 Vue.config.productionTip = false
 
 new Vue({

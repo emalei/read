@@ -10,19 +10,19 @@ import axios from "axios";
 
 let config = {
   // baseURL: process.env.baseURL || process.env.apiUrl || ""
-  baseURL:'http://127.0.0.1:3001'
+  baseURL: 'http://127.0.0.1:3001'
   // timeout: 60 * 1000, // Timeout
   // withCredentials: true, // Check cross-site Access-Control
 };
 
 const _axios = axios.create(config);
-
 _axios.interceptors.request.use(
-  function(config) {
+  function (config) {
     // Do something before request is sent
+    config.headers.common['Authorization'] = '1083504483';
     return config;
   },
-  function(error) {
+  function (error) {
     // Do something with request error
     return Promise.reject(error);
   }
@@ -30,20 +30,20 @@ _axios.interceptors.request.use(
 
 // Add a response interceptor
 _axios.interceptors.response.use(
-  function(response) {
+  function (response) {
     // Do something with response data
-	if(response.status===200){
-		return response.data;
-	}
+    if (response.status === 200) {
+      return response.data;
+    }
     return response;
   },
-  function(error) {
+  function (error) {
     // Do something with response error
     return Promise.reject(error);
   }
 );
 
-Plugin.install = function(Vue) {
+Plugin.install = function (Vue) {
   Vue.$axios = _axios;
   window.$axios = _axios;
   Object.defineProperties(Vue.prototype, {
